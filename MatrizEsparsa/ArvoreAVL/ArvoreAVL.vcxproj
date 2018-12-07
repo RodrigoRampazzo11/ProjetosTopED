@@ -150,6 +150,7 @@
     <ClInclude Include="Arvore.h" />
     <ClInclude Include="ArvoreColunas.h" />
     <ClInclude Include="InformacaoDeArvoreAVL.h" />
+    <ClInclude Include="MatrizEsparsa.h" />
     <ClInclude Include="MinhaInformacao.h" />
     <ClInclude Include="NoDeArvoreAVL.h" />
     <ClInclude Include="stdafx.h" />
@@ -160,6 +161,7 @@
     <ClCompile Include="ArvoreAVL.cpp" />
     <ClCompile Include="ArvoreColunas.cpp" />
     <ClCompile Include="InformacaoDeArvoreAVL.cpp" />
+    <ClCompile Include="MatrizEsparsa.cpp" />
     <ClCompile Include="MinhaInformacao.cpp" />
     <ClCompile Include="NoDeArvoreAVL.cpp" />
     <ClCompile Include="stdafx.cpp">

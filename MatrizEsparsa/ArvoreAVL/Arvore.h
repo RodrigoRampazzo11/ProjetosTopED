@@ -1,3 +1,4 @@
+#pragma once
 #include "NoDeArvoreAVL.h"
 
 class Arvore
