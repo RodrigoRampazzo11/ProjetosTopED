@@ -21,7 +21,7 @@ void Arvore::setRaiz(NoDeArvoreAVL* novaRaiz)
 	this->raiz = novaRaiz;
 }
 
-void Arvore::incluirInfo(InformacaoDeArvoreAVL* novaInfo)
+void Arvore::incluirInfo(InformacaoDeArvoreAVL* novaInfo) throw()
 {
 	if (novaInfo != NULL)
 		if (this->raiz != NULL)
@@ -32,10 +32,10 @@ void Arvore::incluirInfo(InformacaoDeArvoreAVL* novaInfo)
 			setRaiz(novoNo);
 		}
 	else
-		throw;
+		throw std::invalid_argument("Informacao passada eh nula.");
 }
 
-std::string Arvore::toString()
+std::string Arvore::toString() throw()
 {
 	
 	if (this->raiz != NULL)
@@ -46,7 +46,7 @@ std::string Arvore::toString()
 		return string;
 	}
 	else
-		return "";
+		throw std::invalid_argument("Impossivel escrever. Raiz esta nula.");
 
 }
 
@@ -64,7 +64,7 @@ void Arvore::escreveArvAVL(std::string &string, NoDeArvoreAVL* noAtual)
 }
 
 
-void Arvore::incluiInfo(InformacaoDeArvoreAVL* novaInfo, NoDeArvoreAVL* noAtual)
+void Arvore::incluiInfo(InformacaoDeArvoreAVL* novaInfo, NoDeArvoreAVL* noAtual) throw()
 {
 	if (noAtual->getInfo() == NULL) // caso o novo no tenha sido criado e o mesmo esteja vazio
 	{
@@ -74,7 +74,7 @@ void Arvore::incluiInfo(InformacaoDeArvoreAVL* novaInfo, NoDeArvoreAVL* noAtual)
 	else
 	{
 		if (noAtual->compareTo(novaInfo) == 0)
-			throw;
+			throw std::invalid_argument("Essa info ja existe e nao pode ser incluida novamente.");
 		else
 		if (noAtual->compareTo(novaInfo) < 0)
 		{
@@ -136,14 +136,14 @@ int Arvore::defineEquilibrio(NoDeArvoreAVL* noAtual)
 		return ++nivDir;
 }
 
-void Arvore::exluirInfo(InformacaoDeArvoreAVL* infoDes)
+void Arvore::exluirInfo(InformacaoDeArvoreAVL* infoDes) throw()
 {
 	if (this->raiz == NULL)
-		return;
+		throw std::invalid_argument("Impossivel excluir. Raiz da arvore esta nula.");
 	if (infoDes == NULL)
-		return;
+		throw std::invalid_argument("Impossivel excluir. Info desejada passada por parametro esta nula.");
 	if (!existeInfo(infoDes, this->raiz))
-		return;
+		throw std::invalid_argument("Impossivel excluir. Info desejada nao existe.");
 	
 	if (this->raiz->compareTo(infoDes) == 0)
 	{
