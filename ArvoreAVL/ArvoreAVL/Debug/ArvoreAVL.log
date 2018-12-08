@@ -1,2 +1,12 @@
-﻿  ArvoreAVL.cpp
-  ArvoreAVL.vcxproj -> C:\Users\u16192\Documents\GitHub\ProjetosTopED\ArvoreAVL\Debug\ArvoreAVL.exe
+﻿  Arvore.cpp
+c:\temp\git\projetostoped\arvoreavl\arvoreavl\arvore.cpp(25): warning C5043: "Arvore::incluirInfo": a especificação de exceção não corresponde à declaração anterior
+  c:\temp\git\projetostoped\arvoreavl\arvoreavl\arvore.h(31): note: consulte a declaração de 'Arvore::incluirInfo'
+c:\temp\git\projetostoped\arvoreavl\arvoreavl\arvore.cpp(39): warning C5043: "Arvore::toString": a especificação de exceção não corresponde à declaração anterior
+  c:\temp\git\projetostoped\arvoreavl\arvoreavl\arvore.h(33): note: consulte a declaração de 'Arvore::toString'
+c:\temp\git\projetostoped\arvoreavl\arvoreavl\arvore.cpp(68): warning C5043: "Arvore::incluiInfo": a especificação de exceção não corresponde à declaração anterior
+  c:\temp\git\projetostoped\arvoreavl\arvoreavl\arvore.h(7): note: consulte a declaração de 'Arvore::incluiInfo'
+c:\temp\git\projetostoped\arvoreavl\arvoreavl\arvore.cpp(140): warning C5043: "Arvore::exluirInfo": a especificação de exceção não corresponde à declaração anterior
+  c:\temp\git\projetostoped\arvoreavl\arvoreavl\arvore.h(32): note: consulte a declaração de 'Arvore::exluirInfo'
+c:\temp\git\projetostoped\arvoreavl\arvoreavl\arvore.cpp(215): warning C5043: "Arvore::excluiInfo": a especificação de exceção não corresponde à declaração anterior
+  c:\temp\git\projetostoped\arvoreavl\arvoreavl\arvore.h(13): note: consulte a declaração de 'Arvore::excluiInfo'
+  ArvoreAVL.vcxproj -> C:\Temp\Git\ProjetosTopED\ArvoreAVL\Debug\ArvoreAVL.exe

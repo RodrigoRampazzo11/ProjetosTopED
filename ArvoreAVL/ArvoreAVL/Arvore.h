@@ -12,6 +12,8 @@ private:
 	bool existeInfo(InformacaoDeArvoreAVL* infoDes, NoDeArvoreAVL* noAtual);
 	void excluiInfo(InformacaoDeArvoreAVL* infoDes, NoDeArvoreAVL* noAtual, NoDeArvoreAVL* noAnterior, int pont);
 	bool ehFolha(NoDeArvoreAVL* no);
+	NoDeArvoreAVL* acharPaiMaiorDireita(NoDeArvoreAVL* noAtual);
+	NoDeArvoreAVL* acharPaiMaiorEsquerda(NoDeArvoreAVL* noAtual);
 	void rotacoesNecessarias(NoDeArvoreAVL* noAtual, NoDeArvoreAVL* noAnterior, int pont);
 	bool estaBalanceado(NoDeArvoreAVL* noAtual);
 	void ajustaBalanceamento(NoDeArvoreAVL* noAtual, NoDeArvoreAVL* noAnterior, int pont);
