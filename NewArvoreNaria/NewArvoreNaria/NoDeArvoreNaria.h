@@ -15,7 +15,7 @@ private:
 	//int ** vetPtr;
 
 public:
-	NoDeArvoreNaria(int numPonteiros);
+	NoDeArvoreNaria(int tamanhoNo);
 	~NoDeArvoreNaria();
 	int getTamanhoNo();
 	NoDeArvoreNaria* getPonteiroPorPos(int posicao);

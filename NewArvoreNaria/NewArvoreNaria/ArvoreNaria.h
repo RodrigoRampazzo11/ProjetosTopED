@@ -12,6 +12,8 @@ private:
 	void excluiInfo(InformacaoDeArvoreNaria* info, NoDeArvoreNaria* noAtual, NoDeArvoreNaria* noAnterior, int posPontAnt);
 	void escreveArvore(NoDeArvoreNaria* noAtual, std::string &saida);
 	bool existeInfo(InformacaoDeArvoreNaria* info, NoDeArvoreNaria* noAtual);
+	NoDeArvoreNaria* acharPaiMaiorDireita(NoDeArvoreNaria* noAtual, int &posPont, int &posInfo);
+	NoDeArvoreNaria* acharPaiMaiorEsquerda(NoDeArvoreNaria* noAtual);
 
 public:
 	ArvoreNaria(int tamanhoNo);

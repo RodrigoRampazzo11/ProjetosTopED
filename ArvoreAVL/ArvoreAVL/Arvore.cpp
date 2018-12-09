@@ -222,7 +222,7 @@ void Arvore::excluiInfo(InformacaoDeArvoreAVL* infoDes, NoDeArvoreAVL* noAtual, 
 				noAnterior->setEsquerdo(NULL);
 			else  // ponteiro direito
 				noAnterior->setDireito(NULL);
-			balancear();
+			 balancear();
 		}
 		else
 		{
