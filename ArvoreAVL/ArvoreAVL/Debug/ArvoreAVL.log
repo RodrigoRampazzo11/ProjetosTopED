@@ -1,1 +1,3 @@
-﻿LINK : fatal error LNK1168: não foi possível abrir C:\Temp\Git\ProjetosTopED\ArvoreAVL\Debug\ArvoreAVL.exe para escrita
+﻿  ArvoreAVL.cpp
+c:\temp\git\projetostoped\arvoreavl\arvoreavl\arvoreavl.cpp(28): warning C4018: '<': incompatibilidade de signed/unsigned
+  ArvoreAVL.vcxproj -> C:\Temp\Git\ProjetosTopED\ArvoreAVL\Debug\ArvoreAVL.exe

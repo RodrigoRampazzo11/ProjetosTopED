@@ -42,7 +42,6 @@ std::string Arvore::toString() throw()
 	{
 		std::string string = "";
 		escreveArvAVL(string, raiz);
-
 		return string;
 	}
 	else
@@ -380,9 +379,11 @@ bool Arvore::estaBalanceado(NoDeArvoreAVL* noAtual)
 
 void Arvore::ajustaBalanceamento(NoDeArvoreAVL* noAtual, NoDeArvoreAVL* noAnterior, int pont)
 {
-	while (!estaBalanceado(noAtual))
+	bool alterouArvore = false;
+	if (!estaBalanceado(noAtual))
 	{
 		rotacoesNecessarias(noAtual, noAnterior, pont);
+		alterouArvore = true;
 	}
 
 	if (noAtual->getEsquerdo() != nullptr)
@@ -390,6 +391,10 @@ void Arvore::ajustaBalanceamento(NoDeArvoreAVL* noAtual, NoDeArvoreAVL* noAnteri
 
 	if (noAtual->getDireito() != nullptr)
 		ajustaBalanceamento(noAtual->getDireito(), noAtual, 1);
+
+	if (alterouArvore)
+		balancear();
+
 }
 
 void Arvore::balancear()
