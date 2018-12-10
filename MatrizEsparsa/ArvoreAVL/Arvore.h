@@ -7,10 +7,10 @@ private:
 	NoDeArvoreAVL* raiz;
 	void incluiInfo(int chave, InformacaoDeArvoreAVL* novaInfo, NoDeArvoreAVL* noAtual);
 	void escreveArvAVL(std::string &string, NoDeArvoreAVL* noAtual);
+	void escreveInfosArvAVL(std::string &string, NoDeArvoreAVL* noAtual);
 	void incluirNovoNo(NoDeArvoreAVL* noExistente, int pos);
 	void definirEquilibrio();
 	int defineEquilibrio(NoDeArvoreAVL* noAtual);
-	bool existeChave(int chave, NoDeArvoreAVL* noAtual);
 	void excluiChave(int chaveDes, NoDeArvoreAVL* noAtual, NoDeArvoreAVL* noAnterior, int pont);
 	bool ehFolha(NoDeArvoreAVL* no);
 	NoDeArvoreAVL* acharPaiMaiorDireita(NoDeArvoreAVL* noAtual);
@@ -23,6 +23,9 @@ private:
 	void rotacaoParaDireita(NoDeArvoreAVL* no, NoDeArvoreAVL* anterior, int pont);
 	void rotacaoDuplaEsquerda(NoDeArvoreAVL* no, NoDeArvoreAVL* anterior, int pont);
 	void rotacaoDuplaDireita(NoDeArvoreAVL* no, NoDeArvoreAVL* anterior, int pont);
+	bool existeChave(int chave, NoDeArvoreAVL* noAtual);
+	InformacaoDeArvoreAVL* getInfoPorChave(int chave, NoDeArvoreAVL* noAtual);
+	void setInfoPorChave(InformacaoDeArvoreAVL* info, int chave, NoDeArvoreAVL* noAtual);
 
 public:
 	Arvore();
@@ -33,8 +36,9 @@ public:
 	void exluirChave(int chave);
 	std::string toString();
 
-	// IT WOULD BE PRIVATE ////////////////////////////////////////////////////////////
-	
-	//////////////////////////////////////////////////////////////
+	bool existeEstaChave(int chave);
+	InformacaoDeArvoreAVL* getInfoDessaChave(int chave);
+	void setInfoDessaChave(InformacaoDeArvoreAVL* info, int chave);
+	std::string toStringEmOrdem();
 };
 

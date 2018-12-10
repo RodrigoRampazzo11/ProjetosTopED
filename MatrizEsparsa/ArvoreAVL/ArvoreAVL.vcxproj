@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="Arvore.h" />
     <ClInclude Include="ArvoreColunas.h" />
+    <ClInclude Include="ArvoreLinhas.h" />
     <ClInclude Include="InformacaoDeArvoreAVL.h" />
     <ClInclude Include="MatrizEsparsa.h" />
     <ClInclude Include="MinhaInformacao.h" />
@@ -160,6 +161,7 @@
     <ClCompile Include="Arvore.cpp" />
     <ClCompile Include="ArvoreAVL.cpp" />
     <ClCompile Include="ArvoreColunas.cpp" />
+    <ClCompile Include="ArvoreLinhas.cpp" />
     <ClCompile Include="InformacaoDeArvoreAVL.cpp" />
     <ClCompile Include="MatrizEsparsa.cpp" />
     <ClCompile Include="MinhaInformacao.cpp" />

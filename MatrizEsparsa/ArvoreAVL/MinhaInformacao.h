@@ -12,9 +12,9 @@ public:
 	MinhaInformacao(std::string info);
 	~MinhaInformacao();
 	std::string toString();
-	//int compareTo(InformacaoDeArvoreAVL* outraInfo);
+	int compareTo(InformacaoDeArvoreAVL* outraInfo);
 	
 	std::string getInfo();
-	void setInfo(std::string* info);
+	void setInfo(std::string info);
 };
 

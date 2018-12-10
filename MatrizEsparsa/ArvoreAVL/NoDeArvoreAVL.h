@@ -1,6 +1,7 @@
 #pragma once
 #include "InformacaoDeArvoreAVL.h"
 
+
 class NoDeArvoreAVL : public InformacaoDeArvoreAVL
 {
 private:
@@ -9,6 +10,8 @@ private:
 	NoDeArvoreAVL* esquerdo;
 	NoDeArvoreAVL* direito;
 	int equilibrio;
+
+	void percorredor(std::string &saida, NoDeArvoreAVL* noAtual);
 
 public:
 	NoDeArvoreAVL(int chave, InformacaoDeArvoreAVL* info);
@@ -24,6 +27,7 @@ public:
 	void setDireito(NoDeArvoreAVL* noDireito);
 	void setEquilibrio(int equilibrio);
 	std::string toString();
+	std::string toString2();
 	int compareTo(int outraChave);
 };
 

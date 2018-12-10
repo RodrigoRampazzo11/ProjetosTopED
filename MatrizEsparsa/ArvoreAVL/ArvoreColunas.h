@@ -16,5 +16,11 @@ public:
 
 	Arvore* getArvore();
 	void setArvore(Arvore* coluna);
+	void incluirInfo(int coluna, InformacaoDeArvoreAVL* novaInfo);
+	void excluiColuna(int coluna);
+	bool existeColuna(int coluna);
+	InformacaoDeArvoreAVL* getInfoDessaColuna(int coluna);
+	void setInfoDessaColuna(InformacaoDeArvoreAVL* info, int coluna);
+	std::string toStringEmOrdem();
 };
 

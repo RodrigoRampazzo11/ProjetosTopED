@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "NoDeArvoreAVL.h"
-
+#include "ArvoreColunas.h"
+#include "MinhaInformacao.h"
 
 NoDeArvoreAVL::NoDeArvoreAVL(int chave, InformacaoDeArvoreAVL* info)
 {
@@ -67,7 +68,35 @@ void NoDeArvoreAVL::setEquilibrio(int equilibrio)
 
 std::string NoDeArvoreAVL::toString()
 {
-	return std::to_string(this->chave) + " " + this->info->toString(); // +"[" + std::to_string(this->equilibrio) + "]";
+	return std::to_string(this->chave); // + " " + this->info->toString(); // +"[" + std::to_string(this->equilibrio) + "]";
+}
+
+std::string NoDeArvoreAVL::toString2()
+{
+	ArvoreColunas* info = (ArvoreColunas*)this->info;
+	MinhaInformacao* letra = (MinhaInformacao*)info->getInfoDessaColuna((int)this->info);
+
+	std::string saida;
+	percorredor(saida, info->getArvore()->getRaiz());
+
+	return saida;
+}
+
+void NoDeArvoreAVL::percorredor(std::string &saida, NoDeArvoreAVL* noAtual)
+{
+	saida += "(";
+	if (noAtual->getEsquerdo() != nullptr)
+		percorredor(saida, noAtual->getEsquerdo());
+
+	if (noAtual->getInfo() != NULL)
+	{
+		MinhaInformacao* letra = (MinhaInformacao*)noAtual->getInfo();
+		saida += std::to_string(noAtual->getChave()) + " " + letra->toString();
+	}
+
+	if (noAtual->getDireito() != nullptr)
+		percorredor(saida, noAtual->getDireito());
+	saida += ")";
 }
 
 int NoDeArvoreAVL::compareTo(int outraChave)

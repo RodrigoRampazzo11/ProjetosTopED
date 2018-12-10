@@ -1,18 +1,20 @@
 #pragma once
 #include "InformacaoDeArvoreAVL.h";
-#include "Arvore.h";
+#include "ArvoreLinhas.h";
 #include "ArvoreColunas.h";
+#include "MinhaInformacao.h";
 
 class MatrizEsparsa
 {
 private:
-	Arvore* arvLinhas;
+	ArvoreLinhas* arvLinhas;
+	MinhaInformacao* valorPadrao;
 
 public:
-	MatrizEsparsa();
+	MatrizEsparsa(std::string valorPadrao);
 	~MatrizEsparsa();
 
-	void incluirInfo(int lin, int col, InformacaoDeArvoreAVL* info);
+	void incluirInfo(int lin, int col, std::string info);
 	std::string toString();
 };
 

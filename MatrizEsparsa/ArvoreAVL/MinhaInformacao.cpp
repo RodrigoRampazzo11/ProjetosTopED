@@ -16,30 +16,28 @@ std::string MinhaInformacao::getInfo()
 	return this->info;
 }
 
-void MinhaInformacao::setInfo(std::string* info)
+void MinhaInformacao::setInfo(std::string info)
 {
 	this->setInfo(info);
 }
 
 std::string MinhaInformacao::toString()
 {
-	return "Info: " + this->info;
+	return this->info;
 }
 
-
-/*
 int MinhaInformacao::compareTo(InformacaoDeArvoreAVL* outra)
 {
 	MinhaInformacao* outraInfo = (MinhaInformacao*)outra;
 
-	if (this->numero > outraInfo->getNumero())
+	if (this->info > outraInfo->getInfo())
 		return -1;
 	else
-		if (this->numero == outraInfo->getNumero())
+		if (this->info == outraInfo->getInfo())
 			return 0;
 		else
 			// info < outraInfo
 			return 1;
 }
-*/
+
 

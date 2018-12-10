@@ -37,7 +37,6 @@ void Arvore::incluirInfo(int chave, InformacaoDeArvoreAVL* novaInfo)
 
 std::string Arvore::toString()
 {
-	
 	if (this->raiz != NULL)
 	{
 		std::string string = "";
@@ -47,7 +46,19 @@ std::string Arvore::toString()
 	}
 	else
 		return "";
+}
 
+std::string Arvore::toStringEmOrdem()
+{
+	if (this->raiz != NULL)
+	{
+		std::string string = "";
+		escreveInfosArvAVL(string, raiz);
+
+		return string;
+	}
+	else
+		return "";
 }
 
 void Arvore::escreveArvAVL(std::string &string, NoDeArvoreAVL* noAtual)
@@ -61,6 +72,17 @@ void Arvore::escreveArvAVL(std::string &string, NoDeArvoreAVL* noAtual)
 	if (noAtual->getDireito() != NULL)
 		escreveArvAVL(string, noAtual->getDireito());
 	string += ")";
+}
+
+void Arvore::escreveInfosArvAVL(std::string &string, NoDeArvoreAVL* noAtual)
+{
+	if (noAtual->getEsquerdo() != NULL)
+		escreveInfosArvAVL(string, noAtual->getEsquerdo());
+
+	string += "Info " + std::to_string(noAtual->getChave()) + ": " + noAtual->toString2() + "\n";
+
+	if (noAtual->getDireito() != NULL)
+		escreveInfosArvAVL(string, noAtual->getDireito());
 }
 
 
@@ -190,6 +212,14 @@ void Arvore::exluirChave(int chaveDes) throw()
 		excluiChave(chaveDes, this->raiz, NULL, 0);
 }
 
+bool Arvore::existeEstaChave(int chave) throw()
+{
+	if (this->raiz == NULL)
+		throw std::invalid_argument("Impossivel procurar. Raiz esta nula.");
+
+	return existeChave(chave, this->raiz);
+}
+
 bool Arvore::existeChave(int chave, NoDeArvoreAVL* noAtual)
 {
 	if (noAtual->compareTo(chave) == 0)
@@ -211,6 +241,70 @@ bool Arvore::existeChave(int chave, NoDeArvoreAVL* noAtual)
 				return false;
 			else
 				return existeChave(chave, noAtual->getDireito());
+		}
+}
+
+InformacaoDeArvoreAVL* Arvore::getInfoDessaChave(int chave) throw()
+{
+	if (this->raiz == NULL)
+		throw std::invalid_argument("Impossivel procurar. Raiz esta nula.");
+
+	return getInfoPorChave(chave, this->raiz);
+}
+
+InformacaoDeArvoreAVL* Arvore::getInfoPorChave(int chave, NoDeArvoreAVL* noAtual)
+{
+	if (noAtual->compareTo(chave) == 0)
+		return noAtual->getInfo();
+	else
+		if (noAtual->compareTo(chave) < 0)
+		{
+			// novaChave < chaveAtual
+			// chamar o método de novo e passar o ponteiro esquerdo do NÓ ATUAL
+			if (noAtual->getEsquerdo() == nullptr)       // caso o ponteiro não exista, chave não existe
+				return NULL;
+			else
+				return getInfoPorChave(chave, noAtual->getEsquerdo());
+		}
+		else
+		{
+			// novaInfo > infoAtual
+			if (noAtual->getDireito() == nullptr)        // caso o ponteiro não exista, info não existe
+				return NULL;
+			else
+				return getInfoPorChave(chave, noAtual->getDireito());
+		}
+}
+
+void Arvore::setInfoDessaChave(InformacaoDeArvoreAVL* info, int chave) throw()
+{
+	if (this->raiz == NULL)
+		throw std::invalid_argument("Impossivel procurar. Raiz esta nula.");
+
+	setInfoPorChave(info, chave, this->raiz);
+}
+
+void Arvore::setInfoPorChave(InformacaoDeArvoreAVL* info, int chave, NoDeArvoreAVL* noAtual)
+{
+	if (noAtual->compareTo(chave) == 0)
+		noAtual->setInfo(info);
+	else
+		if (noAtual->compareTo(chave) < 0)
+		{
+			// novaChave < chaveAtual
+			// chamar o método de novo e passar o ponteiro esquerdo do NÓ ATUAL
+			if (noAtual->getEsquerdo() == nullptr)       // caso o ponteiro não exista, chave não existe
+				return;
+			else
+				setInfoPorChave(info, chave, noAtual->getEsquerdo());
+		}
+		else
+		{
+			// novaInfo > infoAtual
+			if (noAtual->getDireito() == nullptr)        // caso o ponteiro não exista, info não existe
+				return;
+			else
+				setInfoPorChave(info, chave, noAtual->getDireito());
 		}
 }
 
