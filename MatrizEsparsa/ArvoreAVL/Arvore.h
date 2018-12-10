@@ -13,6 +13,8 @@ private:
 	bool existeChave(int chave, NoDeArvoreAVL* noAtual);
 	void excluiChave(int chaveDes, NoDeArvoreAVL* noAtual, NoDeArvoreAVL* noAnterior, int pont);
 	bool ehFolha(NoDeArvoreAVL* no);
+	NoDeArvoreAVL* acharPaiMaiorDireita(NoDeArvoreAVL* noAtual);
+	NoDeArvoreAVL* acharPaiMaiorEsquerda(NoDeArvoreAVL* noAtual);
 	void rotacoesNecessarias(NoDeArvoreAVL* noAtual, NoDeArvoreAVL* noAnterior, int pont);
 	bool estaBalanceado(NoDeArvoreAVL* noAtual);
 	void ajustaBalanceamento(NoDeArvoreAVL* noAtual, NoDeArvoreAVL* noAnterior, int pont);

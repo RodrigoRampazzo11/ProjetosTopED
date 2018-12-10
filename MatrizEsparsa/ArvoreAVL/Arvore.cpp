@@ -137,12 +137,12 @@ int Arvore::defineEquilibrio(NoDeArvoreAVL* noAtual)
 		return ++nivDir;
 }
 
-void Arvore::exluirChave(int chaveDes)
+void Arvore::exluirChave(int chaveDes) throw()
 {
 	if (this->raiz == NULL)
-		return;
+		throw std::invalid_argument("Impossivel excluir. Raiz da arvore esta nula.");
 	if (!existeChave(chaveDes, this->raiz))
-		return;
+		throw std::invalid_argument("Impossivel excluir. Chave desejada nao existe.");
 	
 	if (this->raiz->compareTo(chaveDes) == 0)
 	{
@@ -152,15 +152,37 @@ void Arvore::exluirChave(int chaveDes)
 		{
 			if (this->raiz->getEsquerdo() != nullptr)
 			{
-				this->raiz->setChave(this->raiz->getEsquerdo()->getChave());
-				this->raiz->setInfo(this->raiz->getEsquerdo()->getInfo());
-				excluiChave(this->raiz->getEsquerdo()->getChave(), this->raiz->getEsquerdo(), this->raiz, 0);
+				NoDeArvoreAVL* noEsquerdo = this->raiz->getEsquerdo();
+				if (ehFolha(noEsquerdo) || noEsquerdo->getDireito() == nullptr)
+				{
+					this->raiz->setChave(noEsquerdo->getChave());
+					this->raiz->setInfo(noEsquerdo->getInfo());
+					excluiChave(noEsquerdo->getChave(), noEsquerdo, this->raiz, 0);
+				}
+				else
+				{
+					NoDeArvoreAVL* paiMaiorNoDireita = acharPaiMaiorDireita(noEsquerdo);
+					this->raiz->setChave(paiMaiorNoDireita->getDireito()->getChave());
+					this->raiz->setInfo(paiMaiorNoDireita->getDireito()->getInfo()); // Vamos fazer colocar o valor do maior Nó à direita do NoEsquerdo da Raiz, na Raiz.
+					excluiChave(paiMaiorNoDireita->getDireito()->getChave(), paiMaiorNoDireita->getDireito(), paiMaiorNoDireita, 1);
+				}
 			}
 			else
 			{
-				this->raiz->setChave(this->raiz->getDireito()->getChave());
-				this->raiz->setInfo(this->raiz->getDireito()->getInfo());
-				excluiChave(this->raiz->getDireito()->getChave(), this->raiz->getDireito(), this->raiz, 1);
+				NoDeArvoreAVL* noDireito = this->raiz->getDireito();
+				if (ehFolha(noDireito) || noDireito->getEsquerdo() == nullptr)
+				{
+					this->raiz->setChave(noDireito->getChave());
+					this->raiz->setInfo(noDireito->getInfo());
+					excluiChave(noDireito->getChave(), noDireito, this->raiz, 1);
+				}
+				else
+				{
+					NoDeArvoreAVL* paiMaiorNoEsquerda = acharPaiMaiorEsquerda(noDireito);
+					this->raiz->setChave(paiMaiorNoEsquerda->getEsquerdo()->getChave());
+					this->raiz->setInfo(paiMaiorNoEsquerda->getEsquerdo()->getInfo()); // Vamos fazer colocar o valor do maior Nó à esquerda do NoDireito da Raiz, na Raiz.
+					excluiChave(paiMaiorNoEsquerda->getEsquerdo()->getChave(), paiMaiorNoEsquerda->getEsquerdo(), paiMaiorNoEsquerda, 0);
+				}
 			}
 		}
 	}
@@ -192,7 +214,7 @@ bool Arvore::existeChave(int chave, NoDeArvoreAVL* noAtual)
 		}
 }
 
-void Arvore::excluiChave(int chaveDes, NoDeArvoreAVL* noAtual, NoDeArvoreAVL* noAnterior, int pont)  // se pont = 0 (esquerdo). Se pont = 1 (direito).
+void Arvore::excluiChave(int chaveDes, NoDeArvoreAVL* noAtual, NoDeArvoreAVL* noAnterior, int pont) throw() // se pont = 0 (esquerdo). Se pont = 1 (direito).
 {
 	if (noAtual->compareTo(chaveDes) == 0)
 	{
@@ -207,17 +229,39 @@ void Arvore::excluiChave(int chaveDes, NoDeArvoreAVL* noAtual, NoDeArvoreAVL* no
 		}
 		else
 		{
-			if (noAtual->getEsquerdo() != NULL) // pegar filho da arvore esquerda para substituir a info atual
+			if (noAtual->getEsquerdo() != nullptr) // pegar filho da arvore esquerda para substituir a info atual
 			{
-				noAtual->setChave(noAtual->getEsquerdo()->getChave());
-				noAtual->setInfo(noAtual->getEsquerdo()->getInfo());
-				excluiChave(noAtual->getEsquerdo()->getChave(), noAtual->getEsquerdo(), noAtual, 0);
+				NoDeArvoreAVL* noEsquerdo = noAtual->getEsquerdo();
+				if (ehFolha(noEsquerdo) || noEsquerdo->getDireito() == nullptr)
+				{
+					noAtual->setChave(noEsquerdo->getChave());
+					noAtual->setInfo(noEsquerdo->getInfo());			   // pegar filho da arvore esquerda para substituir a info atual
+					excluiChave(noEsquerdo->getChave(), noEsquerdo, noAtual, 0);
+				}
+				else
+				{
+					NoDeArvoreAVL* paiMaiorNoDireita = acharPaiMaiorDireita(noEsquerdo);
+					noAtual->setChave(paiMaiorNoDireita->getDireito()->getChave());
+					noAtual->setInfo(paiMaiorNoDireita->getDireito()->getInfo()); // Vamos fazer colocar o valor do maior Nó à direita do NoEsquerdo do NoAtual, no NoAtual.
+					excluiChave(paiMaiorNoDireita->getDireito()->getChave(), paiMaiorNoDireita->getDireito(), paiMaiorNoDireita, 1);
+				}
 			}
 			else // pegar filho da arvore direita para substituir a info atual
 			{
-				noAtual->setChave(noAtual->getDireito()->getChave());
-				noAtual->setInfo(noAtual->getDireito()->getInfo());
-				excluiChave(noAtual->getDireito()->getChave(), noAtual, noAtual, 1);
+				NoDeArvoreAVL* noDireito = noAtual->getDireito();
+				if (ehFolha(noDireito) || noDireito->getEsquerdo() == nullptr)
+				{
+					noAtual->setChave(noDireito->getChave());
+					noAtual->setInfo(noDireito->getInfo());				   // pegar filho da arvore direita para substituir a info atual
+					excluiChave(noDireito->getChave(), noDireito, noAtual, 1);
+				}
+				else
+				{
+					NoDeArvoreAVL* paiMaiorNoEsquerda = acharPaiMaiorEsquerda(noDireito);
+					noAtual->setChave(paiMaiorNoEsquerda->getEsquerdo()->getChave());
+					noAtual->setInfo(paiMaiorNoEsquerda->getEsquerdo()->getInfo()); // Vamos fazer colocar o valor do maior Nó à esquerda do NoDireito do NoAtual, no NoAtual.
+					excluiChave(paiMaiorNoEsquerda->getEsquerdo()->getChave(), paiMaiorNoEsquerda->getEsquerdo(), paiMaiorNoEsquerda, 0);
+				}
 			}
 		}
 	}
@@ -226,21 +270,34 @@ void Arvore::excluiChave(int chaveDes, NoDeArvoreAVL* noAtual, NoDeArvoreAVL* no
 		{
 			// novaChave < chaveAtual
 			// chamar o método de novo e passar o ponteiro esquerdo do NÓ ATUAL
-			if (noAtual->getEsquerdo() == nullptr)       // caso o ponteiro não exista, info não existe
-				return;
+			if (noAtual->getEsquerdo() == nullptr)       // caso o ponteiro não exista, chave não existe
+				throw std::invalid_argument("Imposível excluir. Chave procurada nao existe.");
 			else
 				excluiChave(chaveDes, noAtual->getEsquerdo(), noAtual, 0);
 		}
 		else
 		{
 			// novaChave > chaveAtual
-			if (noAtual->getDireito() == nullptr)        // caso o ponteiro não exista, info não existe
-				return;
+			if (noAtual->getDireito() == nullptr)        // caso o ponteiro não exista, chave não existe
+				throw std::invalid_argument("Imposível excluir. Chave procurada nao existe.");
 			else
 				excluiChave(chaveDes, noAtual->getDireito(), noAtual, 1);
 		}
 }
 
+NoDeArvoreAVL* Arvore::acharPaiMaiorDireita(NoDeArvoreAVL* noAtual)
+{
+	if (noAtual->getDireito()->getDireito() != nullptr)
+		return acharPaiMaiorDireita(noAtual->getDireito());
+	return noAtual;
+}
+
+NoDeArvoreAVL* Arvore::acharPaiMaiorEsquerda(NoDeArvoreAVL* noAtual)
+{
+	if (noAtual->getEsquerdo()->getEsquerdo() != nullptr)
+		return acharPaiMaiorEsquerda(noAtual->getEsquerdo());
+	return noAtual;
+}
 
 bool Arvore::ehFolha(NoDeArvoreAVL* no)
 {
@@ -330,9 +387,11 @@ bool Arvore::estaBalanceado(NoDeArvoreAVL* noAtual)
 
 void Arvore::ajustaBalanceamento(NoDeArvoreAVL* noAtual, NoDeArvoreAVL* noAnterior, int pont)
 {
-	while (!estaBalanceado(noAtual))
+	bool alterouArvore = false;
+	if (!estaBalanceado(noAtual))
 	{
 		rotacoesNecessarias(noAtual, noAnterior, pont);
+		alterouArvore = true;
 	}
 
 	if (noAtual->getEsquerdo() != nullptr)
@@ -340,6 +399,9 @@ void Arvore::ajustaBalanceamento(NoDeArvoreAVL* noAtual, NoDeArvoreAVL* noAnteri
 
 	if (noAtual->getDireito() != nullptr)
 		ajustaBalanceamento(noAtual->getDireito(), noAtual, 1);
+
+	if (alterouArvore)
+		balancear();
 }
 
 void Arvore::balancear()
