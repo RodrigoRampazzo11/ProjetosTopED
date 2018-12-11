@@ -71,11 +71,16 @@ void MatrizEsparsa::incluirInfo(int lin, int col, std::string valor)
 
 std::string MatrizEsparsa::toString()
 {
-	std::string string = "Arvore de Linhas:\n" + this->arvLinhas->toString() + "\n";
-	string += "LINHAS:\n" + arvLinhas->toStringEmOrdem();
+	std::string string = "Arvore de Origens:\n" + this->arvLinhas->toString() + "\n";
+	string += "Origem:\n" + arvLinhas->toStringEmOrdem();
 	
 	//ArvoreColunas* arvColunas = (ArvoreColunas*)arvLinhas->getInfoDessaLinha(0);
 	
 	//string += "Colunas:\n" + arvColunas->toStringEmOrdem();
 	return string;
+}
+
+std::string MatrizEsparsa::getValorPadrao()
+{
+	return this->valorPadrao->toString();
 }

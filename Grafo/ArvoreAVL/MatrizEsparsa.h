@@ -13,6 +13,7 @@ private:
 public:
 	MatrizEsparsa(std::string valorPadrao);
 	~MatrizEsparsa();
+	std::string getValorPadrao();
 
 	void incluirInfo(int lin, int col, std::string info);
 	std::string toString();
