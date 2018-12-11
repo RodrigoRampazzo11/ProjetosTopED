@@ -79,7 +79,7 @@ void Arvore::escreveInfosArvAVL(std::string &string, NoDeArvoreAVL* noAtual)
 	if (noAtual->getEsquerdo() != NULL)
 		escreveInfosArvAVL(string, noAtual->getEsquerdo());
 
-	string += "Info " + std::to_string(noAtual->getChave()) + ": " + noAtual->toString2() + "\n";
+	string += "Linha " + std::to_string(noAtual->getChave()) + ": " + noAtual->toString2() + "\n";
 
 	if (noAtual->getDireito() != NULL)
 		escreveInfosArvAVL(string, noAtual->getDireito());
