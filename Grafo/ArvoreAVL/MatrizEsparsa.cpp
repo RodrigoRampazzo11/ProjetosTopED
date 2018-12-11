@@ -4,7 +4,7 @@
 
 MatrizEsparsa::MatrizEsparsa(std::string valorPadrao)
 {
-	this->arvLinhas = NULL;
+	this->arvLinhas = new ArvoreLinhas();;
 	this->valorPadrao = new MinhaInformacao(valorPadrao);
 }
 
@@ -17,7 +17,7 @@ void MatrizEsparsa::incluirInfo(int lin, int col, std::string valor)
 {	
 	MinhaInformacao* infoAtual = new MinhaInformacao(valor);
 
-	if (arvLinhas != NULL && arvLinhas->getArvore()->getRaiz() !=NULL && arvLinhas->existeLinha(lin))                                                
+	if (arvLinhas->getArvore()->getRaiz() !=NULL && arvLinhas->existeLinha(lin))                                                
 	{
 		ArvoreColunas* arvColunas = (ArvoreColunas*)arvLinhas->getInfoDessaLinha(lin);
 		if (arvColunas != NULL)
@@ -61,8 +61,6 @@ void MatrizEsparsa::incluirInfo(int lin, int col, std::string valor)
 	else // inclui nova linha na Arvore de linhas. Inclui arvColunas e informacao desejada
 		if (infoAtual->compareTo(valorPadrao) != 0)
 		{
-			if (arvLinhas == NULL)
-				arvLinhas = new ArvoreLinhas();
 			ArvoreColunas* arvColunas = new ArvoreColunas();
 			arvColunas->incluirInfo(col, infoAtual);
 			arvLinhas->incluirInfo(lin, arvColunas);
@@ -71,6 +69,9 @@ void MatrizEsparsa::incluirInfo(int lin, int col, std::string valor)
 
 std::string MatrizEsparsa::toString()
 {
+	if (this->arvLinhas->getArvore()->getRaiz() == NULL)
+		return "";
+
 	std::string string = "Arvore de Origens:\n" + this->arvLinhas->toString() + "\n";
 	string += "Origem:\n" + arvLinhas->toStringEmOrdem();
 	
@@ -83,4 +84,13 @@ std::string MatrizEsparsa::toString()
 std::string MatrizEsparsa::getValorPadrao()
 {
 	return this->valorPadrao->toString();
+}
+
+void MatrizEsparsa::deletarVertice(int vertice)
+{
+	if (this->arvLinhas->getArvore()->getRaiz() == NULL)
+		return;
+
+	this->arvLinhas->excluirLinha(vertice);
+	this->arvLinhas->excluirLinhaDeColunas(vertice);
 }

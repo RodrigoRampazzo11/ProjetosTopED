@@ -14,12 +14,14 @@ public:
 	~ArvoreLinhas();
 	std::string toString();
 	//int compareTo(InformacaoDeArvoreAVL* outraInfo);
+	void excluiLinhaDeColunas(int linha, NoDeArvoreAVL* noAtual);
 
 	Arvore* getArvore();
 	void setArvore(Arvore* linha);
 	void incluirInfo(int linha, InformacaoDeArvoreAVL* novaInfo);
 	void excluirLinha(int linha);
 	bool existeLinha(int linha);
+	void excluirLinhaDeColunas(int linha);
 	InformacaoDeArvoreAVL* getInfoDessaLinha(int linha);
 	void setInfoDessaLinha(InformacaoDeArvoreAVL* info, int linha);
 	std::string toStringEmOrdem();

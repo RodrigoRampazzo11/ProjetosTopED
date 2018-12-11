@@ -16,6 +16,7 @@ public:
 	std::string getValorPadrao();
 
 	void incluirInfo(int lin, int col, std::string info);
+	void deletarVertice(int vertice);
 	std::string toString();
 };
 

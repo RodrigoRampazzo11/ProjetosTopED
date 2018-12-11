@@ -12,17 +12,17 @@ class Grafo
 		vector<string> nomeVertice;
 		MatrizEsparsa* aresta;
 
-		bool existeVertice(char* vertice);
+		bool existeVertice(string vertice);
 		string toStringNomesVertices();
 		string toStringArestas();
 
 	public:
 		Grafo(string valorPadrao);
 		~Grafo();
-		void AddVertice(char*);
-		void DelVertice(char*);
-		void AddAresta(char*, char*, char*);
-		void DelAresta(char*, char*);
+		void AddVertice(string);
+		void DelVertice(string);
+		void AddAresta(string, string, string);
+		void DelAresta(string, string);
 
 		string toString();
 };
