@@ -1,9 +1,2 @@
-﻿  ArvoreNaria.cpp
-c:\temp\git\projetostoped\newarvorenaria\newarvorenaria\arvorenaria.cpp(101): warning C5043: "ArvoreNaria::escreverArvore": a especificação de exceção não corresponde à declaração anterior
-  c:\temp\git\projetostoped\newarvorenaria\newarvorenaria\arvorenaria.h(24): note: consulte a declaração de 'ArvoreNaria::escreverArvore'
-c:\temp\git\projetostoped\newarvorenaria\newarvorenaria\arvorenaria.cpp(128): warning C5043: "ArvoreNaria::excluirInfo": a especificação de exceção não corresponde à declaração anterior
-  c:\temp\git\projetostoped\newarvorenaria\newarvorenaria\arvorenaria.h(23): note: consulte a declaração de 'ArvoreNaria::excluirInfo'
-c:\temp\git\projetostoped\newarvorenaria\newarvorenaria\arvorenaria.cpp(172): warning C5043: "ArvoreNaria::excluiInfo": a especificação de exceção não corresponde à declaração anterior
-  c:\temp\git\projetostoped\newarvorenaria\newarvorenaria\arvorenaria.h(12): note: consulte a declaração de 'ArvoreNaria::excluiInfo'
-c:\temp\git\projetostoped\newarvorenaria\newarvorenaria\arvorenaria.cpp(438): warning C4715: 'ArvoreNaria::existeInfo': nem todos os caminhos de controle retornam um valor
+﻿  NewArvoreNaria.cpp
   NewArvoreNaria.vcxproj -> C:\Temp\Git\ProjetosTopED\NewArvoreNaria\Debug\NewArvoreNaria.exe
