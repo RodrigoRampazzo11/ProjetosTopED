@@ -5,15 +5,16 @@
 class MinhaInformacao : public InformacaoDeArvoreAVL
 {
 private:
-	int numero;
+	int RA;
+	std::string nome;
 
 public:
-	MinhaInformacao(int numero);
+	MinhaInformacao(int RA);
 	~MinhaInformacao();
 	std::string toString();
 	int compareTo(InformacaoDeArvoreAVL* outraInfo);
 	
-	int getNumero();
-	void setNumero(int numero);
+	int getRA();
+	void setRA(int RA);
 };
 

@@ -3,9 +3,9 @@
 
 
 
-MinhaInformacao::MinhaInformacao(int numero)
+MinhaInformacao::MinhaInformacao(int RA)
 {
-	this->numero = numero;
+	this->RA = RA;
 }
 
 
@@ -13,29 +13,29 @@ MinhaInformacao::~MinhaInformacao()
 {
 }
 
-int  MinhaInformacao::getNumero()
+int  MinhaInformacao::getRA()
 {
-	return this->numero;
+	return this->RA;
 }
 
-void  MinhaInformacao::setNumero(int numero)
+void  MinhaInformacao::setRA(int RA)
 {
-	this->numero = numero;
+	this->RA = RA;
 }
 
 std::string MinhaInformacao::toString()
 {
-	return std::to_string(this->numero);
+	return std::to_string(this->RA);
 }
 
 int MinhaInformacao::compareTo(InformacaoDeArvoreAVL* outra)
 {
 	MinhaInformacao* outraInfo = (MinhaInformacao*)outra;
 
-	if (this->numero > outraInfo->getNumero())
+	if (this->RA > outraInfo->getRA())
 		return -1;
 	else
-		if (this->numero == outraInfo->getNumero())
+		if (this->RA == outraInfo->getRA())
 			return 0;
 		else
 			// info < outraInfo

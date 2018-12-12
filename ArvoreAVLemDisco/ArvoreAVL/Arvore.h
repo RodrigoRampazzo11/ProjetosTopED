@@ -4,6 +4,13 @@ class Arvore
 {
 private:
 	NoDeArvoreAVL* raiz;
+	struct rec {
+		int esquerda;
+		int direita;
+		std::string RA;
+		int linhaInfo;
+	};
+
 	void incluiInfo(InformacaoDeArvoreAVL* novaInfo, NoDeArvoreAVL* noAtual);
 	void escreveArvAVL(std::string &string, NoDeArvoreAVL* noAtual);
 	void incluirNovoNo(NoDeArvoreAVL* noExistente, int pos);
