@@ -57,7 +57,7 @@ public:
 	void remove(const K &key) {
 		// Throw exception if tree is empty
 		if (tree_is_empty()) {
-			throw std::invalid_argument("No info matches key passed to remove()");
+			throw std::invalid_argument("Impossivel excluir. Essa chave nao existe.");
 		}
 
 		int new_root_pos = remove_recursive(key, read_root_pos());
@@ -98,7 +98,7 @@ private:
 
 		// Check current node key to find where to insert
 		if (key == node.key) {
-			throw std::invalid_argument("Info already on tree");
+			throw std::invalid_argument("Impossivel incluir. Essa chave ja existe.");
 		}
 		else if (key > node.key) {
 			// Insert to right
@@ -129,7 +129,7 @@ private:
 
 	int remove_recursive(const K &key, int current_pos) {
 		if (current_pos == -1) {
-			throw std::invalid_argument("Info not on tree");
+			throw std::invalid_argument("Impossivel remover. Informacao nao esta na arvore.");
 		}
 
 		Node node = read_node(current_pos);
@@ -201,7 +201,7 @@ private:
 
 	T get_info_recursive(const K &key, int current_pos) {
 		if (current_pos == -1) {
-			throw std::invalid_argument("No info matches key passed to get_info()");
+			throw std::invalid_argument("Impossivel procurar. Essa chave nao possui informacao correspondente.");
 		}
 
 		Node node = read_node(current_pos);
@@ -437,22 +437,31 @@ private:
 		}
 
 		space += 0;
-		os << '{' <<
-			'[' << "chave:" << node.key << "]" <<
-			'[' << "valor:" << get(node.key) << "]";
-		os << "[" << "    ";
-		
+
+		os << '(';
 		print_recursive(os, node.left, space);
 
+
+		//os << '{' <<
+		//	'[' << "chave:" << node.key << "]" <<
+		//	'[' << "valor:" << get(node.key) << "]";
+		//os << '}';
+		//os << "[" << "    ";
+		
+		os << node.key << " " << get(node.key);
+
 		//os << std::endl;
-		os <<"]"<<" , "<<'[' << "";
+
+
+		//os <<"]"<<" , "<<'[' << "";
 		print_recursive(os, node.right, space);
 
-		os  << "]"  ;
+		//os  << "]"  ;
 		
 
 		
-		os << '}' ;
+		//os << '}' ;
+		os << ')';
 		return os;
 	}
 };
