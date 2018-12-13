@@ -1,2 +1,4 @@
-﻿  NewArvoreNaria.cpp
-  NewArvoreNaria.vcxproj -> C:\Temp\Git\ProjetosTopED\NewArvoreNaria\Debug\NewArvoreNaria.exe
+﻿  NoDeArvoreNaria.cpp
+c:\users\u16192\documents\github\projetostoped\newarvorenaria\newarvorenaria\nodearvorenaria.cpp(69): warning C5043: "NoDeArvoreNaria::compareTo": a especificação de exceção não corresponde à declaração anterior
+  c:\users\u16192\documents\github\projetostoped\newarvorenaria\newarvorenaria\nodearvorenaria.h(26): note: consulte a declaração de 'NoDeArvoreNaria::compareTo'
+  NewArvoreNaria.vcxproj -> C:\Users\u16192\Documents\GitHub\ProjetosTopED\NewArvoreNaria\Debug\NewArvoreNaria.exe

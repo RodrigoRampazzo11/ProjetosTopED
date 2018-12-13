@@ -65,16 +65,16 @@ void NoDeArvoreNaria::setPonteiroPorPos(NoDeArvoreNaria* novoNo, int posicao)
 		vetPtr[posicao] = novoNo;
 }
 
-int NoDeArvoreNaria::compareTo(InformacaoDeArvoreNaria* outraInfo, int posicao)
+int NoDeArvoreNaria::compareTo(InformacaoDeArvoreNaria* outraInfo, int posicao) throw()
 {
 	if (outraInfo == NULL)
-		throw "Ponteiro nulo";
+		throw std::invalid_argument("Ponteiro nulo");
 
 	if (posicao >= tamanhoNo)
-		throw "Posicão Inválida";
+		throw std::invalid_argument("Posicao Invalida");
 
 	if (this->getInfoPorPos(posicao) == NULL)
-		throw "Posição vazia";
+		throw std::invalid_argument("Posicao vazia");
 	
 	return this->getInfoPorPos(posicao)->compareTo(outraInfo);
 }
